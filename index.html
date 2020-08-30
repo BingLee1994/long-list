@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>长列表</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="./css/ultra-list.css"><link>
+  <link rel="stylesheet" type="text/css" href="./css/list-item.css"><link>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+  <div id="app">
+    <ultra-list
+      :item-height="25"
+      :items="listItems"
+      style="background: #1C2435; position: fixed; left: 0; right: 0; top: 0; bottom: 0;"
+    >
+      <template v-slot:default="slotProp">
+        <list-item
+          v-for="item in slotProp.visibleItems"
+          :key="item.data.id"
+          :data="item.data"
+          :selected="item.selected"
+        />
+      </template>
+    </ultra-list>
+  </div>
+
+  <script src="./js/components/ultra-list.js"></script>
+  <script src="./js/components/list-item.js"></script>
+  <script>
+    let listItems = []
+    let idx = 0, length = 3000
+    while (idx < length) {
+      listItems.push({
+        name: '平安银行' +idx,
+        code: '0'.repeat(6 - String(idx).length) + idx,
+        increaseRate: idx % 2 ? 0.1 : -0.1,
+        total: idx,
+        idx
+      })
+      idx++
+    }
+
+    new Vue({
+      el: '#app',
+      data: {
+        listItems
+      }
+    })
+  </script>
+</body>
+
+</html>

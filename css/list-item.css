@@ -1,0 +1,35 @@
+.list-item {
+    --border: 1px solid #2f3541;
+    display: flex;
+    color: white;
+    height: 25px;
+    line-height: 25px;
+    overflow-y: hidden;
+    background-color: #1C2435;
+    border-bottom: var(--border);
+    box-sizing: border-box;
+}
+
+.list-item.selected {
+    background-color: #28334b;
+}
+
+.list-item > .field {
+    min-width: 80px;
+    text-align: right;
+    padding: 0 10px;
+    color: rgba(255, 255, 255, .9);
+    border-right: var(--border);
+}
+
+.list-item > .field.increase {
+    color: #0A7C55;
+}
+
+.list-item > .field.decrease {
+    color: #AB2329;
+}
+
+.list-item > .field.amount {
+    color: #A97119;
+}
